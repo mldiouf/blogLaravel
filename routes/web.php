@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\registerController;
@@ -26,9 +27,10 @@ Route::get('/api/users/{id}', [UserController::class, 'show']);
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/article/create', [ArticleController::class, 'index'])->name('index');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout'); 
 
-});
+}); 
 
 Route::get('/register', [registerController::class, 'form_register'])->name('register');
 Route::post('/register', [registerController::class, 'form_register_post'])->name('register_post');
