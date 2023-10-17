@@ -19,25 +19,14 @@
             @endforeach
           @endif
           <input type="hidden" name="id" value="{{$article->id }}">
-          <div class="mb-3">
-            <label for="titre" class="form-label">Titre</label>
-            <input type="text" name="titre" class="form-control" id="titre" value="{{$article['titre'] }}" placeholder="Donnez un titre">
+          <div class="card">
+            <h5 class="card-header">{{ $article['categorie']}}</h5>
+            <div class="card-body">
+              <h5 class="card-title">{{$article['titre'] }}</h5>
+              <p class="card-text">{{ $article['contenu']}}</p>
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="contenu" class="form-label">Contenu</label>
-            <textarea name="contenu" class="form-control" id="contenu" rows="3">{{ $article['contenu']}}</textarea>
-          </div>
-          <div class="mb-3">
-            <label for="categorie" class="form-label">Categorie</label>
-            <select name="categorie" class="form-select" aria-label="Default select example">
-              <option selected>{{ $article['categorie']}}</option>
-              <option value="Developpement web">Developpement web</option>
-              <option value="Administration reseaux">Administration reseaux</option>
-              <option value="Intelligence artificielle">Intelligence artificielle (IA)</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Ajouter un article</button>
+            {{-- <button type="submit" class="btn btn-primary">Ajouter un article</button> --}}
           </div>
         </form>
 @endsection

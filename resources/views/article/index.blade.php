@@ -4,21 +4,23 @@
 
 @endsection
 
-@section('contenu')
-@foreach ($articles as $article)
+@section('contenu')     
+          @foreach($articles->chunk(4) as $chunk)
+            <div class="card-group mt-3">
+               @foreach($articles as $article)
+               <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">{{$article->categorie}}</h5>
+                  <p class="card-text">{{$article->titre}}</p>
+                  <a href="{{route('article.show', $article->id)}}" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+                @endforeach
+            </div>
+          @endforeach
 
-<div class="card">
-    <h5 class="card-header">{{$article->categorie}}</h5>
-    <div class="card-body">
-      <h5 class="card-title">{{$article->titre}}</h5>
-      <p class="card-text">{{$article->contenu}}</p>
-      <a href="{{route('article.show', $article->id)}}" class="btn btn-primary">Modifier votre article</a>
-      {{-- <a href="{{route('article.delete', $article->id)}}" class="btn btn-primary">supprimer votre article</a> --}}
-
-    </div>
-  </div>
-  <hr>
-  @endforeach
+  
+        
 @endsection
       
 

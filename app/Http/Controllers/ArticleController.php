@@ -15,7 +15,7 @@ class ArticleController extends Controller
         //
             return view('article.create');
     }
-
+    
     public function index(){
         // afficher la liste des articles
         $articles = Article::all();
@@ -78,4 +78,5 @@ class ArticleController extends Controller
     {
         //
     }
+
 }
