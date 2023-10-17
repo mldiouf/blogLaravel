@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -9,7 +10,8 @@ class DashboardController extends Controller
 {
     //afficher le dashboard
     public function dashboard(){
-        return view('dashboard');
+        $articles = Article::all();
+        return view('dashboard', compact('articles'));
     }
 
     // deconnecter

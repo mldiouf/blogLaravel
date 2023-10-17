@@ -1,12 +1,12 @@
 @extends('layouts.base')
 @section('title')
-     Ajouter un article 
+     Modifier un article 
 
 @endsection
 
 @section('contenu')
-     <h1>Ajouter un article </h1>
-        <form action="{{route('article.store')}}" method="post">
+     <h1>modifier un article </h1>
+        <form action="{{route('article.update')}}" method="post">
           @csrf
 
           @if (session('status'))
@@ -18,18 +18,19 @@
               <div class="alert alert-danger">{{$error}}</div>
             @endforeach
           @endif
+          <input type="hidden" name="id" value="{{$article->id }}">
           <div class="mb-3">
             <label for="titre" class="form-label">Titre</label>
-            <input type="text" name="titre" class="form-control" id="titre" value="{{ old('titre')}}" placeholder="Donnez un titre">
+            <input type="text" name="titre" class="form-control" id="titre" value="{{$article['titre'] }}" placeholder="Donnez un titre">
           </div>
           <div class="mb-3">
             <label for="contenu" class="form-label">Contenu</label>
-            <textarea name="contenu" class="form-control" id="contenu" rows="3">{{ old('contenu')}}</textarea>
+            <textarea name="contenu" class="form-control" id="contenu" rows="3">{{ $article['contenu']}}</textarea>
           </div>
           <div class="mb-3">
             <label for="categorie" class="form-label">Categorie</label>
             <select name="categorie" class="form-select" aria-label="Default select example">
-              <option selected>default</option>
+              <option selected>{{ $article['categorie']}}</option>
               <option value="Developpement web">Developpement web</option>
               <option value="Administration reseaux">Administration reseaux</option>
               <option value="Intelligence artificielle">Intelligence artificielle (IA)</option>

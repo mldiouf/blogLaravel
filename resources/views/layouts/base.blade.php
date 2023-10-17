@@ -25,8 +25,8 @@
                  Article du blog
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('index')}}">Ajouter un article</a></li>
-                  <li><a class="dropdown-item" href="#">Consulter les articles</a></li>
+                  <li><a class="dropdown-item" href="{{route('article.create')}}">Ajouter un article</a></li>
+                  <li><a class="dropdown-item" href="{{route('article.index')}}">Consulter les articles</a></li>
                 </ul>
               </li>
             </ul>

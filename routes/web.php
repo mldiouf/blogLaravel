@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 Route::get('/api/users', [UserController::class, 'index']);
@@ -27,7 +27,13 @@ Route::get('/api/users/{id}', [UserController::class, 'show']);
 
 Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/article/create', [ArticleController::class, 'index'])->name('index');
+    Route::get('/article/create', [ArticleController::class, 'create'])->name('article.create');
+    Route::get('/article/index', [ArticleController::class, 'index'])->name('article.index');
+
+    Route::get('/article/{id}', [ArticleController::class, 'show'])->name('article.show');
+    Route::post('/article/post', [ArticleController::class, 'update'])->name('article.update');
+
+    Route::post('/article/create', [ArticleController::class, 'store'])->name('article.store');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout'); 
 
 }); 
